@@ -24,7 +24,7 @@ public class MapCommand implements CommandExecutor {
             //Create Item
 
 
-            String url2 = "https://media.giphy.com/media/ZYWsYjcMCaYFB6IXqu/giphy.gif";
+            String url2 = "https://www.123gif.de/gifs/geburtstag/geburtstag-herzkerze-0249.gif";
             List<ItemStack> map2 = null;
             try {
                 map2 = new CreateURLMap(url2, player).getItemList();

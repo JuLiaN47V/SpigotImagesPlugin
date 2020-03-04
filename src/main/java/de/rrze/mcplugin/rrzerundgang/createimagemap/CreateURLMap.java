@@ -10,7 +10,9 @@ import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -32,12 +34,16 @@ public class CreateURLMap {
 
     private List<ItemStack> getMapItemList(String url, Player player) throws IOException {
         player.sendMessage("Switch4");
-        List<Image> image = new ImageConv().GifUrlConvert(url, player);
-        Iterator iterator = image.iterator();
-        player.sendMessage("getMapItemList");
+        ArrayList<BufferedImage> image = new ImageConv().getFrames(player);
+        player.sendMessage("187");
+        Iterator<BufferedImage> iterator = image.iterator();
+        player.sendMessage("188");
         MapView map = Bukkit.createMap(player.getWorld());
+        player.sendMessage("189");
         map.setScale(MapView.Scale.FARTHEST);
+        player.sendMessage("190");
         item = new ItemStack(Material.FILLED_MAP, 1);
+        player.sendMessage("1191");
         MapMeta meta = (MapMeta) item.getItemMeta();
 
         while (iterator.hasNext()){
