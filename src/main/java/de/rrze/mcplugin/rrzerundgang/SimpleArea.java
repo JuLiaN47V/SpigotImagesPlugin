@@ -22,9 +22,6 @@ public class SimpleArea {
         int x = 0;
         int y = 0;
 
-        player.sendMessage(firstblock.getBlockFace().toString());
-        player.sendMessage(secondblock.getBlockFace().toString());
-
         if (firstblock.getBlockFace().equals(secondblock.getBlockFace())) {
             if (firstblock.getCoordinates().get(0) == secondblock.getCoordinates().get(0)) {
                 if (firstblock.getCoordinates().get(2) > secondblock.getCoordinates().get(2)) {
@@ -53,10 +50,14 @@ public class SimpleArea {
             throw new InvalidBlockArea("Not the same side");
         }
 
-        List<Integer> list = new ArrayList<Integer>();
-        list.add(x);
-        list.add(y);
+        List<Integer> list = new ArrayList<>();
+        list.add(x + 1);
+        list.add(y + 1);
 
         return list;
+    }
+
+    public SimpleBlock getFirstblock() {
+        return this.firstblock;
     }
 }

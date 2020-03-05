@@ -8,7 +8,7 @@ import java.util.concurrent.Callable;
 
 public class SimpleBlock implements Callable {
 
-    public int x = 0;
+    private int x = 0;
     private int y = -2;
     private int z = 0;
     private boolean stauts = false;
@@ -52,5 +52,17 @@ public class SimpleBlock implements Callable {
     @Override
     public Object call() throws Exception {
         return null;
+    }
+
+    public int getX(){
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public int getZ() {
+        return this.z;
     }
 }

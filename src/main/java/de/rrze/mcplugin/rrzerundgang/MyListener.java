@@ -1,9 +1,11 @@
 package de.rrze.mcplugin.rrzerundgang;
 
 import de.rrze.mcplugin.rrzerundgang.createimagemap.InvalidBlockArea;
+import de.rrze.mcplugin.rrzerundgang.imagecreation.MCImage;
 import de.rrze.mcplugin.rrzerundgang.imagecreation.MapItems;
 import de.rrze.mcplugin.rrzerundgang.imagecreation.SubImages;
 import org.bukkit.Material;
+import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -67,11 +69,16 @@ public class MyListener implements Listener {
 
 
                 URL link = new URL ("https://www.rrze.fau.de/files/2017/07/Logo_RGB_51-51-153-400x171.jpg");
-                List<BufferedImage> imagelist = SubImages.getList(link, area);
+                //TODO FIX
+                List<BufferedImage> imagelist = SubImages.getList(link, area, player);
+                player.sendMessage("Hallo");
                 //TODO
                 List<ItemStack> maplist = MapItems.getMaps(imagelist, player);
                 //TODO
-                MCImage.setImages(area, maplist);
+                player.sendMessage("Welt");
+                World world = player.getWorld();
+                MCImage.setMaps(world, maplist, area, event.getBlockFace(), player);
+                player.sendMessage("Moin");
 
                 try {
                     player.sendMessage(area.getArea().get(0) + "x" + area.getArea().get(1));
