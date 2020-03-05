@@ -1,6 +1,8 @@
 package de.rrze.mcplugin.rrzerundgang;
 
 import de.rrze.mcplugin.rrzerundgang.createimagemap.InvalidBlockArea;
+import de.rrze.mcplugin.rrzerundgang.imagecreation.MapItems;
+import de.rrze.mcplugin.rrzerundgang.imagecreation.SubImages;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -8,6 +10,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MainHand;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
@@ -17,6 +20,8 @@ import org.bukkit.plugin.Plugin;
 import org.omg.CORBA.INTERNAL;
 
 import java.awt.image.BufferedImage;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 
@@ -24,7 +29,7 @@ public class MyListener implements Listener {
 
 
     @EventHandler
-    public void onClick(PlayerInteractEvent event) throws InvalidBlockArea {
+    public void onClick(PlayerInteractEvent event) throws InvalidBlockArea, MalformedURLException {
         Block block = event.getClickedBlock();
         Player player = event.getPlayer();
 
@@ -60,8 +65,13 @@ public class MyListener implements Listener {
                 player.sendMessage("2th block set");
                 SimpleArea area = new SimpleArea (firstSimpleBlock, secondSimpleBlock, player);
 
+
+                URL link = new URL ("https://www.rrze.fau.de/files/2017/07/Logo_RGB_51-51-153-400x171.jpg");
+                List<BufferedImage> imagelist = SubImages.getList(link, area);
                 //TODO
-                List<BufferedImage> list = new SubImages(link, area.getArea().get(0), area.getArea().get(1));
+                List<ItemStack> maplist = MapItems.getMaps(imagelist, player);
+                //TODO
+                MCImage.setImages(area, maplist);
 
                 try {
                     player.sendMessage(area.getArea().get(0) + "x" + area.getArea().get(1));

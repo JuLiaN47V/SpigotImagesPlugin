@@ -23,22 +23,22 @@ import java.util.List;
 
 public class ImageConv {
         Image ImageURLConvert(String surl) {
-            URL url = null;
+        URL url = null;
 
-            try {
+        try {
             url = new URL(surl);
-            } catch (MalformedURLException e){
-                e.printStackTrace();
-            }
-            BufferedImage image = null;
+        } catch (MalformedURLException e){
+            e.printStackTrace();
+        }
+        BufferedImage image = null;
 
-            try {
-                image = ImageIO.read(url);
-            } catch (java.io.IOException e) {
-                e.printStackTrace();
-            }
+        try {
+            image = ImageIO.read(url);
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
 
-            return (Image) image.getScaledInstance(128,128, Image.SCALE_SMOOTH);
+        return (Image) image.getScaledInstance(128,128, Image.SCALE_SMOOTH);
     }
 
     List<Image> GifUrlConvert(String gurl, Player player) throws IOException {
