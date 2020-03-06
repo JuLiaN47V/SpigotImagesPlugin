@@ -18,17 +18,17 @@ public class MapItems {
     public static List<ItemStack> getMaps(List<BufferedImage> list, Player player){
         List<ItemStack> itemList = new ArrayList<>();
         ItemStack item;
-        player.sendMessage("Yo");
+
         Iterator listiterator = list.iterator();
-        player.sendMessage("sooos");
+
         while (listiterator.hasNext()){
-            player.sendMessage("Meiden");;
+
             MapView map = Bukkit.createMap(player.getWorld());
             map.getRenderers().clear();
             map.setScale(MapView.Scale.FARTHEST);
-            player.sendMessage("Zirkus");
+
             MapRenderer renderTest = new MyRenderer(listiterator.next());
-            player.sendMessage("Mexiko");
+
             map.addRenderer(renderTest);
 
             item = new ItemStack(Material.FILLED_MAP, 1);

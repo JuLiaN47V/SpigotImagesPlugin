@@ -40,9 +40,9 @@ public class SimpleArea {
             }
 
             if (firstblock.getCoordinates().get(1) > secondblock.getCoordinates().get(1)) {
-                y = firstblock.getCoordinates().get(1) - secondblock.getCoordinates().get(1) + 1;
+                y = firstblock.getCoordinates().get(1) - secondblock.getCoordinates().get(1) ;
             } else if (secondblock.getCoordinates().get(1) > firstblock.getCoordinates().get(1)) {
-                y = secondblock.getCoordinates().get(1) - firstblock.getCoordinates().get(1) + 1;
+                y = secondblock.getCoordinates().get(1) - firstblock.getCoordinates().get(1);
             } else {
                 y = 1;
             }
@@ -60,4 +60,9 @@ public class SimpleArea {
     public SimpleBlock getFirstblock() {
         return this.firstblock;
     }
+
+    public SimpleBlock getSecondblock() {
+        return this.secondblock;
+    }
+
 }

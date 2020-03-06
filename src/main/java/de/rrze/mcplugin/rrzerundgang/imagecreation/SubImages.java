@@ -42,11 +42,13 @@ public class SubImages {
         int counterystart = 0;
         boolean preserveAlpha = false;
 
-        while (countery < area.getArea().get(1) - 1){
+        while (countery < area.getArea().get(1)){
+            player.sendMessage("Ha");
             counterx = 0;
             counterxstart = 0;
             while (counterx < area.getArea().get(0)){
-                subimage = image.getSubimage(counterxstart, counterystart, ysubimage, xsubimage);
+                player.sendMessage("x");
+                subimage = image.getSubimage(counterxstart, counterystart, xsubimage, ysubimage);
                 int imageType = preserveAlpha ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
                 BufferedImage scaledBI = new BufferedImage(128,128, imageType);
                 Graphics2D g = scaledBI.createGraphics();
@@ -63,7 +65,6 @@ public class SubImages {
             counterystart = counterystart + ysubimage;
             countery++;
         }
-
 
 
         return list;

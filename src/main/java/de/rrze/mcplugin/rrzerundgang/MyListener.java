@@ -68,15 +68,13 @@ public class MyListener implements Listener {
                 SimpleArea area = new SimpleArea (firstSimpleBlock, secondSimpleBlock, player);
 
 
-                URL link = new URL ("https://www.rrze.fau.de/files/2017/07/Logo_RGB_51-51-153-400x171.jpg");
-                //TODO FIX
+                URL link = new URL ("https://images.maennersache.de/michael-wendler-egal,id=fbd0c639,b=maennersache,w=1100,ca=0,0,100,100,rm=sk.jpeg");
+                //TODO
                 List<BufferedImage> imagelist = SubImages.getList(link, area, player);
-                player.sendMessage("Hallo");
-                //TODO
+
                 List<ItemStack> maplist = MapItems.getMaps(imagelist, player);
-                //TODO
-                player.sendMessage("Welt");
                 World world = player.getWorld();
+                //TODO
                 MCImage.setMaps(world, maplist, area, event.getBlockFace(), player);
                 player.sendMessage("Moin");
 
