@@ -20,6 +20,6 @@ public class MyRenderer extends MapRenderer {
 
     @Override
     public void render(MapView map, MapCanvas canvas, Player player) {
-        canvas.drawImage(10, 10, (Image) test);
+        canvas.drawImage(0, 0, (Image) test);
     }
 }

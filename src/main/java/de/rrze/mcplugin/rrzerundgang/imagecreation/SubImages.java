@@ -5,6 +5,7 @@ import de.rrze.mcplugin.rrzerundgang.createimagemap.InvalidBlockArea;
 import org.bukkit.entity.Player;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class SubImages {
     public static List<BufferedImage> getList(URL link, SimpleArea area, Player player) throws InvalidBlockArea {
         List<BufferedImage> list = new ArrayList<>();
         BufferedImage image = null;
+        BufferedImage subimage = null;
         int imageHeight = 0;
         int imageWidth = 0;
         int xsubimage = 0;
@@ -38,15 +40,23 @@ public class SubImages {
         int countery = 0;
         int counterxstart;
         int counterystart = 0;
+        boolean preserveAlpha = false;
 
-        while (countery < area.getArea().get(1)){
+        while (countery < area.getArea().get(1) - 1){
             counterx = 0;
             counterxstart = 0;
-            player.sendMessage(Integer.toString(countery));
             while (counterx < area.getArea().get(0)){
-                player.sendMessage(Integer.toString(counterx));
-                list.add(image.getSubimage(counterxstart, counterystart, ysubimage, xsubimage));
-                player.sendMessage(Integer.toString(list.size()));
+                subimage = image.getSubimage(counterxstart, counterystart, ysubimage, xsubimage);
+                int imageType = preserveAlpha ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
+                BufferedImage scaledBI = new BufferedImage(128,128, imageType);
+                Graphics2D g = scaledBI.createGraphics();
+                if (preserveAlpha) {
+                    g.setComposite(AlphaComposite.Src);
+                }
+                g.drawImage(subimage, 0, 0, 128, 128, null);
+                g.dispose();
+
+                list.add(scaledBI);
                 counterxstart = counterxstart + xsubimage;
                 counterx++;
             }
