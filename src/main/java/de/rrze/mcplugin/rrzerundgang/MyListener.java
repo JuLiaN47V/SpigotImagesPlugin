@@ -1,7 +1,7 @@
 package de.rrze.mcplugin.rrzerundgang;
 
 import de.rrze.mcplugin.rrzerundgang.createimagemap.InvalidBlockArea;
-import de.rrze.mcplugin.rrzerundgang.imagecreation.MCImage;
+import de.rrze.mcplugin.rrzerundgang.imagecreation.setImages.MCImageFrames;
 import de.rrze.mcplugin.rrzerundgang.imagecreation.MapItems;
 import de.rrze.mcplugin.rrzerundgang.imagecreation.SubImages;
 import org.bukkit.Material;
@@ -13,13 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.MainHand;
-import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.metadata.LazyMetadataValue;
-import org.bukkit.metadata.MetadataValue;
-import org.bukkit.plugin.Plugin;
-import org.omg.CORBA.INTERNAL;
 
 import java.awt.image.BufferedImage;
 import java.net.MalformedURLException;
@@ -69,13 +63,13 @@ public class MyListener implements Listener {
 
 
                 URL link = new URL ("https://images.maennersache.de/michael-wendler-egal,id=fbd0c639,b=maennersache,w=1100,ca=0,0,100,100,rm=sk.jpeg");
-                //TODO
+
                 List<BufferedImage> imagelist = SubImages.getList(link, area, player);
 
                 List<ItemStack> maplist = MapItems.getMaps(imagelist, player);
                 World world = player.getWorld();
                 //TODO
-                MCImage.setMaps(world, maplist, area, event.getBlockFace(), player);
+                MCImageFrames.setMaps(world, maplist, area, event.getBlockFace(), player);
                 player.sendMessage("Moin");
 
                 try {
