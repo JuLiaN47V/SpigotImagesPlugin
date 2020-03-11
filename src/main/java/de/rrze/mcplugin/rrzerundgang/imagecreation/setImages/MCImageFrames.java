@@ -16,6 +16,10 @@ public class MCImageFrames{
             MCImageEast.setFrames(world, list, area, blockFace, player);
         } else if (blockFace.equals(BlockFace.WEST)){
             MCImageWest.setFrames(world, list, area, blockFace, player);
+        } else if (blockFace.equals(BlockFace.NORTH)){
+            MCImageNorth.setFrames(world, list, area, blockFace, player);
+        } else if (blockFace.equals(blockFace.SOUTH)){
+            MCImageSouth.setFrames(world, list, area, blockFace, player);
         }
 
     }

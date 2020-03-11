@@ -143,5 +143,79 @@ public class MCImage {
         }
     }
 
+    protected static void setFramesNorth(World world, List<ItemStack> list, int startBlockZ, int startBlockY, int startBlockX, SimpleArea area, BlockFace blockFace) throws InvalidBlockArea {
+        int countery = 0;
+        int counterx;
+        int n = 0;
+        int defaultStartBlockX;
+        int x = area.getArea().get(0);
+        int y = area.getArea().get(1);
+
+
+        defaultStartBlockX = startBlockX;
+
+
+        while (countery < y) {
+            counterx = 0;
+            startBlockX = defaultStartBlockX;
+            while (counterx < x) {
+
+
+                Location location = new Location(world, startBlockX, startBlockY, startBlockZ);
+
+                ItemFrame frame = world.spawn(location, ItemFrame.class);
+
+                frame.setFacingDirection(blockFace);
+
+                frame.setItem(list.get(n));
+
+                n++;
+
+                counterx++;
+                startBlockX--;
+            }
+            startBlockY--;
+            countery++;
+
+        }
+    }
+
+    protected static void setFramesSouth(World world, List<ItemStack> list, int startBlockZ, int startBlockY, int startBlockX, SimpleArea area, BlockFace blockFace) throws InvalidBlockArea {
+        int countery = 0;
+        int counterx;
+        int n = 0;
+        int defaultStartBlockX;
+        int x = area.getArea().get(0);
+        int y = area.getArea().get(1);
+
+
+        defaultStartBlockX = startBlockX;
+
+
+        while (countery < y) {
+            counterx = 0;
+            startBlockX = defaultStartBlockX;
+            while (counterx < x) {
+
+
+                Location location = new Location(world, startBlockX, startBlockY, startBlockZ);
+
+                ItemFrame frame = world.spawn(location, ItemFrame.class);
+
+                frame.setFacingDirection(blockFace);
+
+                frame.setItem(list.get(n));
+
+                n++;
+
+                counterx++;
+                startBlockX++;
+            }
+            startBlockY--;
+            countery++;
+
+        }
+    }
+
 
 }
