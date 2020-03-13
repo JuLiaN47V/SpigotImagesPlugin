@@ -17,12 +17,10 @@ public class MCImageEast extends MCImage {
 
         startBlockX = area.getFirstblock().getX();
         startBlockX++;
-        player.sendMessage("x: " + startBlockX);
+
         startBlockZ = getStartBlockZEast(area);
-        player.sendMessage("z:" + startBlockZ);
 
         startBlockY = getStartBlockY(area);
-        player.sendMessage("y:" + startBlockY);
 
         setFramesEast(world, list ,startBlockZ, startBlockY, startBlockX, area, blockFace);
 

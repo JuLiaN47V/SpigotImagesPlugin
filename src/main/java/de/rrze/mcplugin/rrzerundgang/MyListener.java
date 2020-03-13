@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
 import java.awt.image.BufferedImage;
-import java.net.MalformedURLException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class MyListener implements Listener {
 
 
     @EventHandler
-    public void onClick(PlayerInteractEvent event) throws InvalidBlockArea, MalformedURLException {
+    public void onClick(PlayerInteractEvent event) throws InvalidBlockArea, IOException {
         Block block = event.getClickedBlock();
         Player player = event.getPlayer();
 
@@ -61,16 +61,18 @@ public class MyListener implements Listener {
                 player.sendMessage("2th block set");
                 SimpleArea area = new SimpleArea (firstSimpleBlock, secondSimpleBlock, player);
 
+                String url = ImageLinkFromFile.getLink();
 
-                URL link = new URL ("https://images.maennersache.de/michael-wendler-egal,id=fbd0c639,b=maennersache,w=1100,ca=0,0,100,100,rm=sk.jpeg");
+                player.sendMessage(RRZERundgang.getPlugin(RRZERundgang.class).getDataFolder().toString());
+
+                URL link = new URL (url);
 
                 List<BufferedImage> imagelist = SubImages.getList(link, area, player);
 
                 List<ItemStack> maplist = MapItems.getMaps(imagelist, player);
                 World world = player.getWorld();
-                //TODO
+
                 MCImageFrames.setMaps(world, maplist, area, event.getBlockFace(), player);
-                player.sendMessage("Moin");
 
                 try {
                     player.sendMessage(area.getArea().get(0) + "x" + area.getArea().get(1));

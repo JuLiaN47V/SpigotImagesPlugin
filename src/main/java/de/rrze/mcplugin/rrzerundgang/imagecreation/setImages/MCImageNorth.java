@@ -15,18 +15,12 @@ public class MCImageNorth extends MCImage {
         int startBlockZ;
         int startBlockY;
 
-        player.sendMessage("Z");
         startBlockZ = area.getFirstblock().getZ();
         startBlockZ--;
-        player.sendMessage("X");
 
         startBlockX = getStartBlockXNorth(area);
 
-        player.sendMessage("x: " + startBlockX);
-        player.sendMessage("z:" + startBlockZ);
-
         startBlockY = getStartBlockY(area);
-        player.sendMessage("y:" + startBlockY);
 
         setFramesNorth(world, list ,startBlockZ, startBlockY, startBlockX, area, blockFace);
 
