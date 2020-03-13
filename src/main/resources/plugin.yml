@@ -1,0 +1,8 @@
+name: RRZERundgang
+version: ${project.version}
+main: de.rrze.mcplugin.rrzerundgang.RRZERundgang
+api-version: 1.13
+commands:
+  map:
+    description: Create Map
+    usage: /map
