@@ -17,12 +17,10 @@ public class MCImageWest extends MCImage {
 
         startBlockX = area.getFirstblock().getX();
         startBlockX--;
-        player.sendMessage("x: " + startBlockX);
+
         startBlockZ = getStartBlockZWest(area);
-        player.sendMessage("z:" + startBlockZ);
 
         startBlockY = getStartBlockY(area);
-        player.sendMessage("y:" + startBlockY);
 
         setFramesWest(world, list ,startBlockZ, startBlockY, startBlockX, area, blockFace);
 

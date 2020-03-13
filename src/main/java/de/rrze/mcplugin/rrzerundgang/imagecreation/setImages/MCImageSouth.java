@@ -15,18 +15,12 @@ public class MCImageSouth extends MCImage {
         int startBlockZ;
         int startBlockY;
 
-        player.sendMessage("Z");
         startBlockZ = area.getFirstblock().getZ();
         startBlockZ++;
-        player.sendMessage("X");
 
         startBlockX = getStartBlockXSouth(area);
 
-        player.sendMessage("x: " + startBlockX);
-        player.sendMessage("z:" + startBlockZ);
-
         startBlockY = getStartBlockY(area);
-        player.sendMessage("y:" + startBlockY);
 
         setFramesSouth(world, list ,startBlockZ, startBlockY, startBlockX, area, blockFace);
 
